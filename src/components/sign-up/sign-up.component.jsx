@@ -24,19 +24,21 @@ class SignUp extends React.Component{
         }
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email,password);
-            createUserProfileDocument(user,{displayName});
+            await createUserProfileDocument(user,{displayName});
+
+            this.setState({
+                displayName:'',
+                email:'',
+                password:'',
+                confirmPassword:'',
+            });
+
         }catch(e){
             console.log(e);
         }
-        this.setState({
-            displayName:'',
-            email:'',
-            password:'',
-            confirmPassword:'',
-        });
     }
     handleChange=(e)=>{
-        const {value,name} = e.target;
+        const {name,value} = e.target;
         this.setState({
             [name]:value,
         })
@@ -48,7 +50,7 @@ class SignUp extends React.Component{
             <div className="sign-up">
                 <h2 className="title">I dont have account</h2>
                 <span>Sign up with your email and password</span>
-                <form className='sign-up-form' onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <FormInput handleChange={this.handleChange}
                                name="displayName"
                                type="text"
@@ -78,7 +80,5 @@ class SignUp extends React.Component{
             </div>
         )
     }
-
 }
-
 export default SignUp;
