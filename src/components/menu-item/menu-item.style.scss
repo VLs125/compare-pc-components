@@ -9,13 +9,16 @@
   margin: 0 7.5px 15px;
   overflow: hidden;
 
+
   &:hover{
     cursor:pointer;
 
     & .background-image{
       transform: scale(1.1);
       transition: transform 1s cubic-bezier(0.25,0.45,0.45,0.95);
+
     }
+
   }
   &.large{
     height: 380px;
@@ -31,6 +34,9 @@
     height: 100%;
     background-position: center;
     background-size: cover;
+    -webkit-transition: 2s ease; /* Safari and Chrome */
+    -moz-transition: 2s ease; /* Firefox 4 */
+    -o-transition: 2s ease;
   }
   .content{
     height: 90px;
@@ -56,4 +62,6 @@
     }
 
   }
+
 }
+
